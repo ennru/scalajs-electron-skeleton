@@ -1,5 +1,6 @@
 package com.example.electronapp
 
+import japgolly.scalajs.react.ReactDOM
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -18,6 +19,8 @@ object Renderer {
     val body = dom.document.getElementById("anchor")
     val filenames = listFiles(".")
     body.textContent = "<p>Hello World from Scala.js</p>" + display(filenames)
+
+    ReactDOM.render(Components.Hello("Magnus"), dom.document.getElementById("test"))
   }
 
   def display(filenames: Seq[String]): String = {
@@ -34,4 +37,26 @@ object Renderer {
   def listFiles(path: String): Seq[String] = {
     fs.readdirSync(path).asInstanceOf[js.Array[String]]
   }
+}
+
+import japgolly.scalajs.react.ReactComponentB
+
+object Components {
+
+  import japgolly.scalajs.react.vdom.prefix_<^._
+
+  val a = <.ol(
+    ^.id := "my-list",
+    ^.lang := "en",
+    ^.margin := "8px",
+    <.li("Item 1"),
+    <.li("Item 2"))
+
+  val Hello =
+    ReactComponentB[String]("Hello")
+      .render_P(name ⇒ <.div("Hello there ", name))
+      .build
+
+  // Usage:
+
 }
