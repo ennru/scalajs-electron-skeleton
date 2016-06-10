@@ -1,7 +1,8 @@
 package com.example.electronapp
 
+import org.scalajs.dom
+
 import scala.scalajs.js
-import org.scalajs.jquery.jQuery
 
 import js.Dynamic.{global => g}
 import js.annotation.JSExport
@@ -14,9 +15,9 @@ object Renderer {
 
   @JSExport
   def main(): Unit = {
-    val body = jQuery("body")
+    val body = dom.document.getElementById("anchor")
     val filenames = listFiles(".")
-    body.append("<p>Hello World from Scala.js</p>" + display(filenames))
+    body.textContent = "<p>Hello World from Scala.js</p>" + display(filenames)
   }
 
   def display(filenames: Seq[String]): String = {
