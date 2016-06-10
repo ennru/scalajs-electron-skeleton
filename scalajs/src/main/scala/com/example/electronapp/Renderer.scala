@@ -2,6 +2,7 @@ package com.example.electronapp
 
 import scala.scalajs.js
 import org.scalajs.jquery.jQuery
+
 import js.Dynamic.{global => g}
 import js.annotation.JSExport
 
@@ -10,20 +11,23 @@ object Renderer {
 
   val fs = g.require("fs")
 
+
   @JSExport
   def main(): Unit = {
-    jQuery("body").append("<p>Hello World from Scala.js</p>")
+    val body = jQuery("body")
     val filenames = listFiles(".")
-    display(filenames)
+    body.append("<p>Hello World from Scala.js</p>" + display(filenames))
   }
 
-  def display(filenames: Seq[String]) = {
-    jQuery("body").append("<p>Listing the files in the '.' using node.js API:")
-    jQuery("body").append("<ul>")
+  def display(filenames: Seq[String]): String = {
+    val sb = new StringBuilder
+    sb.append("<p>Listing the files in the '.' using node.js API:")
+    sb.append("<ul>")
     filenames.foreach { filename =>
-      jQuery("body").append(s"<li>$filename</li>")
+      sb.append(s"<li>$filename</li>")
     }
-    jQuery("body").append("</ul></p>")
+    sb.append("</ul></p>")
+    sb.toString()
   }
 
   def listFiles(path: String): Seq[String] = {
