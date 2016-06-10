@@ -1,5 +1,28 @@
 {
-  "name"    : "your-app",
-  "version" : "0.1.0",
-  "main"    : "main.js"
+  "name": "scalajs-electron-skeleton",
+  "version": "1.0.0",
+  "description": "An Electron application written with ReactJS in Scala",
+  "main": "main.js",
+  "scripts": {
+    "start": "main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ennru/scalajs-electron-skeleton.git"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "ScalaJs",
+    "ReactJS"
+  ],
+  "bugs": {
+    "url": "https://github.com/ennru/scalajs-electron-skeleton/issues"
+  },
+  "homepage": "https://github.com/ennru/scalajs-electron-skeleton#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^1.0.1"
+  }
 }

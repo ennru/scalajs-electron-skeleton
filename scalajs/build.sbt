@@ -47,7 +47,6 @@ electronMain := {
   val jsDeps = (packageJSDependencies in Compile).value
 
   // hack to get require and __dirname to work in the main process
-  // see https://gitter.im/scala-js/scala-js/archives/2015/04/25
   val hack = """
   |var addGlobalProps = function(obj) {
   |  obj.require = require;

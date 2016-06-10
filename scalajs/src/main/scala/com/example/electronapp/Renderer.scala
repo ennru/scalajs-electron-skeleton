@@ -2,9 +2,9 @@ package com.example.electronapp
 
 import japgolly.scalajs.react.ReactDOM
 import org.scalajs.dom
+import org.scalajs.dom.html
 
 import scala.scalajs.js
-
 import js.Dynamic.{global => g}
 import js.annotation.JSExport
 
@@ -13,25 +13,10 @@ object Renderer {
 
   val fs = g.require("fs")
 
-
   @JSExport
-  def main(): Unit = {
-    val body = dom.document.getElementById("anchor")
+  def main(body: html.Div): Unit = {
     val filenames = listFiles(".")
-    body.textContent = "<p>Hello World from Scala.js</p>" + display(filenames)
-
-    ReactDOM.render(Components.Hello("Magnus"), dom.document.getElementById("test"))
-  }
-
-  def display(filenames: Seq[String]): String = {
-    val sb = new StringBuilder
-    sb.append("<p>Listing the files in the '.' using node.js API:")
-    sb.append("<ul>")
-    filenames.foreach { filename =>
-      sb.append(s"<li>$filename</li>")
-    }
-    sb.append("</ul></p>")
-    sb.toString()
+    ReactDOM.render(Components.display(filenames), body)
   }
 
   def listFiles(path: String): Seq[String] = {
@@ -45,18 +30,15 @@ object Components {
 
   import japgolly.scalajs.react.vdom.prefix_<^._
 
-  val a = <.ol(
-    ^.id := "my-list",
-    ^.lang := "en",
-    ^.margin := "8px",
-    <.li("Item 1"),
-    <.li("Item 2"))
-
-  val Hello =
-    ReactComponentB[String]("Hello")
-      .render_P(name ⇒ <.div("Hello there ", name))
+  val display =
+    ReactComponentB[Seq[String]]("display")
+      .render_P(filenames => {
+        <.div(
+          <.p("Hello World from Scala.js."),
+          <.p("Listing the files in the '.' using node.js API:"),
+          <.ul(filenames.map(<.li(_)))
+        )
+      })
       .build
-
-  // Usage:
 
 }

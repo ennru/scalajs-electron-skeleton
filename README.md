@@ -1,12 +1,11 @@
-Scala.js & Electron Skeleton
-============================
+Scala.js Electron Skeleton with ReactJS
+=======================================
 
 This is an example of how to use Scala.js together with Electron to build native applications.
 
 ## Getting started
-Get started, enter the scalajs subfolder, start sbt and launch the fastOptJS task
+Get started, start sbt and launch the electronMain task
 ``` bash
-cd scalajs
 sbt
 sbt> ~electronMain
 ```
