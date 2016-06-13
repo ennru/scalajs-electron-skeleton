@@ -7,11 +7,12 @@ import org.scalajs.dom.html
 import scala.scalajs.js
 import js.Dynamic.{global => g}
 import js.annotation.JSExport
+import scala.scalajs.js.Dynamic
 
 @JSExport
 object Renderer {
 
-  val fs = g.require("fs")
+  val fs: Dynamic = g.require("fs")
 
   @JSExport
   def main(body: html.Div): Unit = {
@@ -32,13 +33,13 @@ object Components {
 
   val display =
     ReactComponentB[Seq[String]]("display")
-      .render_P(filenames => {
+      .render_P { filenames =>
         <.div(
           <.p("Hello World from Scala.js."),
           <.p("Listing the files in the '.' using node.js API:"),
           <.ul(filenames.map(<.li(_)))
         )
-      })
+      }
       .build
 
 }
