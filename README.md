@@ -47,11 +47,11 @@ launcher launches. You should not extend `js.App` elsewhere in your code or that
 
 ## Renderer process
 The javascript code loaded from within the rendered process (i.e. `index.html`) is implemented in
-`com.example.electronapp.Renderer.scala` and uses the `JSExport` annotation to be callable from 
+`com.example.electronapp.Renderer.scala` and uses the `@JSExport` annotation to be callable from 
 javascript and its main method is explicitly called from within `index.html`.
 
 ## Copyright
-Copyright © 2016 Enno Runne, (base on work by [Boris Chazalet](https://github.com/bchazalet/scalajs-electron-skeleton))
+Copyright © 2016 Enno Runne (based on work by [Boris Chazalet](https://github.com/bchazalet/scalajs-electron-skeleton))
 
 This work is free. You can redistribute it and/or modify it under the
 terms of the Do What The Fuck You Want To Public License, Version 2,
