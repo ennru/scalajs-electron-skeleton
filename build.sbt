@@ -1,5 +1,3 @@
-//import org.scalajs.sbtplugin.ScalaJSPlugin
-
 name := "Scala.js Electron Skeleton"
 
 scalaVersion in ThisBuild := V.scala
@@ -14,9 +12,7 @@ initialize := {
 
 scalacOptions in ThisBuild ++= Seq("-deprecation", "-feature")
 
-lazy val shared = crossProject.crossType(CrossType.Pure).in(file("shared")).
-  settings(
-  )
+lazy val shared = crossProject.crossType(CrossType.Pure).in(file("shared"))
 
 lazy val sharedJvm = shared.jvm
 lazy val sharedJs = shared.js
@@ -24,7 +20,7 @@ lazy val sharedJs = shared.js
 lazy val backend = project.
   dependsOn(sharedJvm)
 
-lazy val frontend = project.in(file("scalajs")).
+lazy val frontend = project.
   dependsOn(sharedJs)
 
 lazy val root = project.in(file(".")).
