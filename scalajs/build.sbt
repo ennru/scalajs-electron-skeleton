@@ -4,7 +4,8 @@ enablePlugins(ScalaJSPlugin)
 
 libraryDependencies ++= Seq(
   "org.scala-js" %%% "scalajs-dom" % "0.9.0",
-  "com.github.japgolly.scalajs-react" %%% "core" % "0.11.1"
+  "com.github.japgolly.scalajs-react" %%% "core" % "0.11.1",
+  "com.lihaoyi" %%% "upickle" % V.upickle
 )
 
 jsDependencies ++= Seq(
