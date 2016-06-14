@@ -9,12 +9,15 @@
     and Electron <script>document.write(process.versions['electron'])</script>.
 
     <div id="anchor"></div>
-    <div id="test"></div>
+    <div id="websocket"></div>
 
     <script type="text/javascript" src="frontend-jsdeps.js"></script>
     <script type="text/javascript" src="frontend-fastopt.js"></script>
     <script type="text/javascript">
-      com.example.electronapp.Renderer().main(document.getElementById('anchor'));
+      com.example.electronapp.Renderer().main(
+          document.getElementById('anchor'),
+          document.getElementById('websocket')
+        );
     </script>
 
 
